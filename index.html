@@ -1,3 +1,5 @@
+<!doctype html>
+<html lang="en">
 <head>
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-116757364-1"></script>
@@ -9,109 +11,142 @@
     gtag('config', 'UA-116757364-1');
   </script>
 
+  <!-- Required meta tags -->
   <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+  <link href="res/style-bootstrap.css" rel="stylesheet">
+
+
   <title>Ali Malik</title>
-  <link href="res/style.css" rel="stylesheet">
+
   <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,500" rel="stylesheet" type="text/css">
 </head>
 
-
 <body>
+  <div class="container" >
+    <!-- <div class="row mt-5"> -->
+    <div class="row">
+      <div class="col-md-1"></div>
 
-  <div class="background-image"></div>
-  <div>
-    <div class="header" >
-      <a href="./index.html">
-        <div id="profile-image">
-          <img src="res/img/profile.png">
-        </div>
-      </a>
-      <div id="header-text">
-        <div id="profile-name">
-          Ali Malik
-        </div>
-        <div id="profile-descr">
-          Student and Lecturer at Stanford University
-        </div>
-        <div id="profile-info">
-          malikali _at_ stanford.edu
-        </div>
-        <div id="icons">
+      <div class="col-md-10">
 
-          <div class="icon">
-            <a href="https://twitter.com/malikrali" target="_blank">
-              <img src="res/icons/twitter.png">
+        <div class="row mt-5" id="header">
+          <!-- <div class="col-md-12 center-block"> -->
+            <div class="text-center">
+            <a href="./index.html">
+              <img id="profile-image" src="res/img/profile.png">
             </a>
-          </div>
-          <div class="icon">
-            <a href="http://malikaliraza.com/blog" target="_blank">
-              <img src="res/icons/rss-dark.png">
-            </a>
-          </div>
-          <div class="icon">
-            <a href="https://www.linkedin.com/in/ali-malik-65a6966b" target="_blank">
-              <img src="res/icons/linkedin.png">
-            </a>
-          </div>
-          <div class="icon">
-            <a href="https://github.com/malik-ali" target="_blank">
-              <img src="res/icons/github-dark.png">
-            </a>
-          </div>
+            </div>
+          <!-- </div> -->
 
+          <!-- <div class="col-md-9"> -->
+              <div class="card-body" id="header-text">
+               <h1 class="card-title" id="profile-name"> Ali Malik</h1>
+               <div class="card-subtitle" id="profile-descr">Student and Lecturer at Stanford University</div>
+                <div class="card-text mb-2" id="profile-info">
+                  malikali _at_ stanford.edu
+                </div>
+                <div id="icons">
+                  <!-- <div class="row mt-5"> -->
+
+                  <div class="icon">
+                    <a href="https://twitter.com/malikrali" target="_blank">
+                      <img src="res/icons/twitter.png">
+                    </a>
+                  </div>
+                  <div class="icon">
+                    <a href="http://malikaliraza.com/blog" target="_blank">
+                      <img src="res/icons/rss-dark.png">
+                    </a>
+                  </div>
+                  <div class="icon">
+                    <a href="https://www.linkedin.com/in/ali-malik-65a6966b" target="_blank">
+                      <img src="res/icons/linkedin.png">
+                    </a>
+                  </div>
+                  <div class="icon">
+                    <a href="https://github.com/malik-ali" target="_blank">
+                      <img src="res/icons/github-dark.png">
+                    </a>
+                  </div>
+                </div>
+              </div>
+          </div>
+        <!-- </div> -->
+
+        <div class="row mt-20">
+            <div class="col-xs-12" id="about">
+              <p>
+                I am a student at Stanford University studying Mathematics (logic, probability, number theory) and Computer Science (theory, machine learning, security). I lecture a class on standard C++ programming!
+              </p>
+
+              <p>
+                I love teaching and thinking about problems that make my brain hurt. I keep a <a href="http://malikaliraza.com/blog" target="_blank">blog</a> on the side where I write about random Maths, CS, and Philosophy related gems that come my way.
+              </p>
+              <hr/>
+            </div>
         </div>
       </div>
-
+      <div class="col-md-1"></div>
     </div>
 
-    <div id="about">
-      <p>
-        I am a student at Stanford University studying Mathematics (logic, probability, number theory) and Computer Science (theory, machine learning, security). I lecture a class on standard C++ programming!
-      </p>
 
-      <p>
-        I love teaching and thinking about problems that make my brain hurt. I keep a <a href="http://malikaliraza.com/blog" target="_blank">blog</a> on the side where I write about random Maths, CS, and Philosophy related gems that come my way.
-      </p>
-    </div>
-
-  </div>
-  <div class="body-container">
-
-    <div class="container">
+    <div class="row section-title">
+      <div class="col-12 text-center">
       <h2>
         Blog
       </h2>
-
-      <p>
-        This <a href="http://malikaliraza.com/blog" target="_blank">blog</a> is generally just my ramblings about random things. Whenever I encounter anything interesting or figure out a cool way to think about a problem, I write the results up here for personal venting and public education.
-      </p>
+      </div>
     </div>
-    <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <p>
+          This <a href="http://malikaliraza.com/blog" target="_blank">blog</a> is generally just my ramblings about random things. Whenever I encounter anything interesting or figure out a cool way to think about a problem, I write the results up here for personal venting and public education.
+        </p>
+      </div>
+    </div>
+
+    <hr>
+
+    <div class="row section-title">
+      <div class="col-12 text-center">
       <h2>
         Teaching
       </h2>
 
-      <p>
-        Here are some links to the class websites of the courses I have taught at Stanford so far. If you have any questions or suggestions for improvements, please feel free to email me!
-      </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <p>
+          Here are some links to the class websites of the courses I have taught at Stanford so far. If you have any questions or suggestions for improvements, please feel free to email me!
+        </p>
 
-      <ul id="class-list">
-        <li> <a href="https://web.stanford.edu/class/archive/cs/cs106l/cs106l.1184/" target="_blank">CS106L: Standard C++ Programming, Winter 2018</a>  </li>
-        <li> <a href="https://web.stanford.edu/class/archive/cs/cs106l/cs106l.1176/" target="_blank">CS106L: Standard C++ Programming, Spring 2017</a>  </li>
-      </ul>
+        <ul id="class-list">
+          <li> <a href="https://web.stanford.edu/class/archive/cs/cs106l/cs106l.1184/" target="_blank">CS106L: Standard C++ Programming, Winter 2018</a>  </li>
+          <li> <a href="https://web.stanford.edu/class/archive/cs/cs106l/cs106l.1176/" target="_blank">CS106L: Standard C++ Programming, Spring 2017</a>  </li>
+        </ul>
+      </div>
     </div>
 
-    <div class="container">
+    <hr>
+
+    <div class="row section-title">
+      <div class="col-12 text-center">
       <h2>
         Papers and Projects
       </h2>
 
-      <div id="projects-container">
-        <div class="projects-row">
+      </div>
+    </div>
 
 
+    <div class="row">
+
+      <div class="col-md-6 col-sm-12">
           <div class="project">
               <div class="project-inner">
                 <a href="http://malikaliraza.com/blog/category/mathematics/" target="_blank">
@@ -130,6 +165,9 @@
               </div>
           </div>
 
+      </div>
+
+      <div class="col-md-6 col-sm-12">
           <div class="project">
               <div class="project-inner">
                 <a href="projects/archive_of_code/index.html#title">
@@ -148,11 +186,14 @@
               </div>
           </div>
 
+      </div>
+    </div>
 
-        </div>
-        <div class="projects-row">
 
-         <div class="project">
+    <div class="row">
+
+      <div class="col-md-6 col-sm-12">
+        <div class="project">
               <div class="project-inner">
                 <a href="projects/wikiracer/index.html" target="_blank">
                   <img src="projects/wikiracer/proj_img.png">
@@ -172,7 +213,11 @@
               </div>
           </div>
 
-          <div class="project">
+
+      </div>
+
+      <div class="col-md-6 col-sm-12">
+         <div class="project">
               <div class="project-inner">
                 <a href="todo.html">
                   <img src="projects/lit_stylistic_similarity/proj_img.png">
@@ -193,9 +238,17 @@
           </div>
 
 
-        </div>
       </div>
     </div>
+
+
   </div>
 
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
 </body>
+</html>
