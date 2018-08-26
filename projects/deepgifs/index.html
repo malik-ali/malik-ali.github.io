@@ -1,0 +1,338 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-116757364-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-116757364-1');
+  </script>
+
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+  <link href="../../res/style.css" rel="stylesheet">
+  <link href="./style.css" rel="stylesheet">
+
+
+  <title>DeepGIFs</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,500" rel="stylesheet" type="text/css">
+</head>
+
+
+
+<body>
+  <div class="container paper-container my-4" id="outer-container" >
+    <div class="row paper-title ">
+      <div class="col-12">
+      <h1>
+        DeepGIFs: Using Deep Learning to Understand and Synthesize Motion
+      </h1>
+      <h2>
+        <a href="../../index.html">Ali Malik</a>, <a href="https://www.linkedin.com/in/mtroute/" target="_blank">Michael Troute</a>, and  <a href="http://brahmcapoor.com" target="_blank">Brahm Capoor</a>
+      </h2>
+      </div>
+    </div>
+
+    <div class="row my-5">
+      <div class="col-md-6 col-xs-12 text-right">
+        <a class="paper-link" href="DeepGIFs.pdf" target="_blank">
+          <h5>
+            Read the paper
+          </h5>
+        </a>
+      </div>
+
+      <div class="col-md-6 col-xs-12 text-left">
+        <a class="paper-link" href="https://github.com/malik-ali/DeepGIFs" target="_blank">
+          <h5>
+            View the code
+          </h5>
+        </a>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-12">
+        <p>
+          Humans are adept at intuiting how objects <em>can</em> and <em>should</em> move. We form this understanding long before we understand the physical mechanisms underpinning motion. Understanding these "rules of motion" is central to the task of generating realistic sequences; frames should plausibly follow from previous frames, and objects should move, deform, and interact realistically. Structuring a video generation task around consistent motion generation is a challenging problem which we attempt to solve using deep generative networks.
+        </p>
+      </div>
+    </div>
+
+    <div class="row section-title">
+      <div class="col-12">
+      <h2>
+        Abstract
+      </h2>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-12">
+        <p>
+        Recurrent neural networks (RNNs) have seen widespread use across a variety of generative tasks requiring temporality. In this paper we explore the effectiveness of deep recurrent networks in the task of understanding motion. In particular, we propose a modular architecture for inferring realistic motion from still "seed images", based on the recent success of generative adversarial networks. We evaluate this architecture on a variety of synthetic datasets and show that our network is able to successfully learn motion and generate new videos from still images.
+        </p>
+      </div>
+    </div>
+
+
+    <div class="row section-title">
+      <div class="col-12">
+      <h2>
+        Architecture
+      </h2>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-12 text-center">
+        <img id="arch-diagram" src="architecture.png"/>
+        <p class="text-left">
+          Our model consists of a convolutional encoder and decoder network, an LSTM, and a discriminator network. Our architecture uses four <code>conv-relu-pool</code> layers to encode the seed frame into a latent representation on which the LSTM predicts future frames. The decoder network converts these predictions back into images and has the inverse architecture of the encoder. The discriminator has the same architecture as the encoder with a sigmoid function applied to the final scalar output. It is used to discriminate between the generated frames and the original data. This allows our network to generate clearer outputs.
+        </p>
+      </div>
+    </div>
+
+    <div class="row section-title">
+      <div class="col-12">
+      <h2>
+        Results: <span class="highlight">Bouncing Ball</span>
+      </h2>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-12 text-center">
+        <p class="text-left">
+          Each pair of images consists of an actual GIF in our dataset on the left and a generated GIF on the right, produced by taking the first frame of the actual GIF and inputting it to our model.
+        </p>
+
+
+        <div class="row gif-container">
+          <div class="col-lg-3 col-xs-12">
+
+            <div class="row gif-pair">
+                <img src="bball/bball_0_real.gif"/>
+                <img src="bball/bball_0_fake.gif"/>
+            </div>
+
+          </div>
+
+          <div class="col-lg-3 col-xs-12">
+            <div class="row gif-pair">
+                <img src="bball/bball_1_real.gif"/>
+                <img src="bball/bball_1_fake.gif"/>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-xs-12">
+            <div class="row gif-pair">
+                <img src="bball/bball_2_real.gif"/>
+                <img src="bball/bball_2_fake.gif"/>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-xs-12">
+            <div class="row gif-pair">
+                <img src="bball/bball_3_real.gif"/>
+                <img src="bball/bball_3_fake.gif"/>
+            </div>
+          </div>
+        </div>
+
+
+        <!--  -->
+
+        <div class="row gif-container">
+          <div class="col-lg-3 col-xs-12">
+
+            <div class="row gif-pair">
+                <img src="bball/bball_4_real.gif"/>
+                <img src="bball/bball_4_fake.gif"/>
+            </div>
+
+          </div>
+
+          <div class="col-lg-3 col-xs-12">
+            <div class="row gif-pair">
+                <img src="bball/bball_5_real.gif"/>
+                <img src="bball/bball_5_fake.gif"/>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-xs-12">
+            <div class="row gif-pair">
+                <img src="bball/bball_6_real.gif"/>
+                <img src="bball/bball_6_fake.gif"/>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-xs-12">
+            <div class="row gif-pair">
+                <img src="bball/bball_7_real.gif"/>
+                <img src="bball/bball_7_fake.gif"/>
+            </div>
+          </div>
+        </div>
+
+        <!--  -->
+
+        <div class="row gif-container">
+          <div class="col-lg-3 col-xs-12">
+
+
+
+          </div>
+
+          <div class="col-lg-3 col-xs-12">
+            <div class="row gif-pair">
+                <img src="bball/bball_8_real.gif"/>
+                <img src="bball/bball_8_fake.gif"/>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-xs-12">
+            <div class="row gif-pair">
+                <img src="bball/bball_9_real.gif"/>
+                <img src="bball/bball_9_fake.gif"/>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-xs-12">
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="row section-title">
+      <div class="col-12">
+      <h2>
+        Results: <span class="highlight">Moving MNIST</span>
+      </h2>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-12 text-center">
+        <p class="text-left">
+          Each pair of images consists of an actual GIF in our dataset on the left and a generated GIF on the right, produced by taking the first frame of the actual GIF and inputting it to our model.
+        </p>
+
+
+        <div class="row gif-container">
+          <div class="col-lg-3 col-xs-12">
+
+            <div class="row gif-pair">
+                <img src="mnist/mnist_0_real.gif"/>
+                <img src="mnist/mnist_0_fake.gif"/>
+            </div>
+
+          </div>
+
+          <div class="col-lg-3 col-xs-12">
+            <div class="row gif-pair">
+                <img src="mnist/mnist_1_real.gif"/>
+                <img src="mnist/mnist_1_fake.gif"/>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-xs-12">
+            <div class="row gif-pair">
+                <img src="mnist/mnist_2_real.gif"/>
+                <img src="mnist/mnist_2_fake.gif"/>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-xs-12">
+            <div class="row gif-pair">
+                <img src="mnist/mnist_3_real.gif"/>
+                <img src="mnist/mnist_3_fake.gif"/>
+            </div>
+          </div>
+        </div>
+
+
+        <!--  -->
+
+        <div class="row gif-container">
+          <div class="col-lg-3 col-xs-12">
+
+            <div class="row gif-pair">
+                <img src="mnist/mnist_4_real.gif"/>
+                <img src="mnist/mnist_4_fake.gif"/>
+            </div>
+
+          </div>
+
+          <div class="col-lg-3 col-xs-12">
+            <div class="row gif-pair">
+                <img src="mnist/mnist_5_real.gif"/>
+                <img src="mnist/mnist_5_fake.gif"/>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-xs-12">
+            <div class="row gif-pair">
+                <img src="mnist/mnist_6_real.gif"/>
+                <img src="mnist/mnist_6_fake.gif"/>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-xs-12">
+            <div class="row gif-pair">
+                <img src="mnist/mnist_7_real.gif"/>
+                <img src="mnist/mnist_7_fake.gif"/>
+            </div>
+          </div>
+        </div>
+
+        <!--  -->
+
+        <div class="row gif-container">
+          <div class="col-lg-3 col-xs-12">
+
+
+
+          </div>
+
+          <div class="col-lg-3 col-xs-12">
+            <div class="row gif-pair">
+                <img src="mnist/mnist_8_real.gif"/>
+                <img src="mnist/mnist_8_fake.gif"/>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-xs-12">
+            <div class="row gif-pair">
+                <img src="mnist/mnist_9_real.gif"/>
+                <img src="mnist/mnist_9_fake.gif"/>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-xs-12">
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+</body>
+
+</html>
