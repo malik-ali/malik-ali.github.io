@@ -80,9 +80,7 @@ a:hover {
 	background-color: white;
 	border-radius: 10px;
 
-	min-width: 450px;
-	height: 220px;
-
+	min-height: 220px;
 	text-align: center;
 
 	border: 1px solid lightgray;
@@ -96,6 +94,16 @@ a:hover {
 
 	display: flex;
 	align-items: center;
+}
+
+@media only screen and (max-width: 350px) {
+    .project img {
+        display: none;
+    }
+
+    .project {
+		padding-left: 0px;
+    }
 }
 
 .project-inner {
