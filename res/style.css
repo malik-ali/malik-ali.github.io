@@ -1,6 +1,5 @@
 #outer-container {
 	max-width: 1200px;
-	padding: 25px;
 }
 
 #profile-image {
@@ -46,6 +45,7 @@ body {
 	margin: 0;
 	font-family: 'Roboto', Times, sans-serif;
 	font-size: 17px;
+	padding: 20px;
 }
 
 a {

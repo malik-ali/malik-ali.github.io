@@ -12,6 +12,7 @@
 .paper-container {
 	border: 1px solid gray;
 	border-radius: 40px;
+	padding: 20px;
 }
 
 
@@ -36,7 +37,8 @@
 .gif-pair {
 	display: flex;
 	justify-content: center;
-	width: 250px;
+	min-width: 200px;
+	margin: auto;
 }
 
 .gif-pair img {
