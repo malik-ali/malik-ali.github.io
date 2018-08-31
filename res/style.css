@@ -109,8 +109,6 @@ a:hover {
 .project-inner {
 	display: flex;
 	justify-content: space-around;
-	height: 100%;
-
 }
 
 .project-text-container {
@@ -130,13 +128,6 @@ a:hover {
 /*.project img:hover {
 	transform: scale(1.1);
 }*/
-
-.project-inner {
-	display: flex;
-	justify-content: space-around;
-	height: 100%;
-
-}
 
 .project-text-container {
 	width: 100%;
