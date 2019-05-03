@@ -136,20 +136,19 @@ a:hover {
 }
 
 .project-text-container h1 {
-	font-size: 25px;
+	font-size: 22px;
 	margin: 0;
 	margin-bottom: 5px;
 	font-weight: normal;
 }
 
 .project-text-container h2 {
-	font-size: 18px;
+	font-size: 16px;
 	text-align: left;
-	font-style: italic;
 	padding: 0;
 	margin: 0;
 	margin-bottom: 15px;
-	font-weight: normal;
+	font-weight: lighter;
 }
 
 .project-text-container p {
