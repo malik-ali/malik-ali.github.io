@@ -1,0 +1,166 @@
+<html>
+<head>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-116757364-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-116757364-1');
+  </script>
+
+  <title>WikiRacer</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="content-container">
+
+  <div class="header">
+    <div>
+    <h1>WikiRacer</h1>
+    <p>
+      Ali Malik (malikali _at_ stanford.edu)
+    </p>
+  </div>
+  </div>
+
+  <h2> Overview </h2>
+
+  <p>
+    In this assignment, students implement a bot that will intelligently find a Wikipedia link ladder between two given pages. In the process they will get practice working with iterators, algorithms, templates, and special containers like a priority queue.
+
+  </p>
+
+  <p>
+    A Wikpedia link ladder is simply a list of Wikipedia links that one can follow to get from the start page to the end page. It is based on the popular <a href="https://en.wikipedia.org/wiki/Wikipedia:Wikirace" target="_blank">Wikirace</a> game which you can play online <a href="https://thewikigame.com" target="_blank">here</a>. Although usually just a fun pastime, looking at different Wikipedia ladders can give a lot of interesting insights into the relationship and semantic similarity between different pages.  For example, there is a famous observation that repeatedly clicking the first, non-parenthesised/italicised link starting on any Wikipedia page will always get you to the Philosophy page. This fact, popularised by an xkcd comic's hover caption, lead a team of mathematicians from the University of Vermont to  conjecture that the flow of information in the world's largest, most meticulously indexed collection of human knowledge tends to pages like Philosophy because the subject matter of this field is a major organizing principle for the ideas represented by human knowledge.
+
+  </p>
+
+  <p>
+    Here is the <a href="wikiracer.pdf" target="_blank">actual assignment</a> handout and the associated starter code:
+  </p>
+  <ul>
+    <li><a href="02_WikiRacerLinksA.zip">Part A</a></li>
+    <li><a href="02_WikiRacerLinksB.zip">Part B</a></li>
+  </ul>
+
+
+
+<h2>Meta Information</h2>
+<table class="meta-table">
+  <tr>
+    <td>Summary</td>
+    <td>The WikiRacer assignment lets students implement an intelligent bot that finds a Wikipedia link ladder between two given pages.</td>
+  </tr>
+  <tr>
+    <td>Topics</td>
+    <td>Vectors, sets, priority queues, string processing, algorithms</td>
+  </tr>
+  <tr>
+    <td>Audience</td>
+    <td>CS2</td>
+  </tr>
+  <tr>
+    <td>Difficulty</td>
+    <td>Low to moderate with most students taking about five to seven hours.
+    </td>
+  </tr>
+  <tr><td>Strengths</td>
+    <td>The assignment is unique and interesting in its algorithmic messiness. Students really resonate with the fact that there is no "right" answer to this problem and this gives the assignment a very real world problem solving feel. It is also straightforward to adjust the difficulty of the assignment by tweaking the number of helpful hints or code snippets you provide in the handout. Lastly, the end product is something students can play with indefinitely and challenge their friends to try and beat the program.  </td>
+  </tr>
+  <tr>
+    <td>Weaknesses</td>
+    <td>There are a few weaknesses to this assignment. Firstly, it is not very graphical in its output and this can be kind of boring. Secondly, Wikipedia is enormous so with an assignment like this, efficiency becomes a paramount concern; small inefficiencies can have drastic impacts to performance so care has to be taken by the instructor in this regard. Moreover, the optimal solution can still take up to 5-10 minutes for certain inputs. Nevertheless, I have found students enjoy this characteristic of the assignment as it feels more relatable to real world programming.</td>
+  </tr>
+  <tr>
+    <td>Dependencies</td>
+    <td>An understanding of basic containers (vector, set) and string processing. My version is framed in terms of C++ so also encourages an understanding of standard library algorithms and iterators although this should be easily adaptable. Assignment also requires ability to pull the html of Wikipedia's pages from the internet.</td>
+  </tr>
+  <tr>
+    <td>Variants</td>
+    <td>Students can try and come up with their own algorithm to try and beat the suggested solution. Assignment difficulty can also be varied by adjusting the amount of started code or helpful snippets provided at the start. Variants could also let students deal with downloading the html page using networking libraries of the appropriate language.</td>
+  </tr>
+</table>
+
+<h2>Information</h2>
+<p>
+  The algorithm that backs this assignment is a sort of pseudo A* search with a (probably) inadmissible heuristic. The fundamental function of the algorithm lies in being able to assign priorities to different links on the current page based on how likely they are to lead to the target page. For example, suppose our start page is Lion and our target page is Barack_Obama and let's say these are the links we could follow from the Lion page:
+</p>
+<ul>
+  <li>Middle_Ages</li>
+  <li>Federal_government_of_the_United_States</li>
+  <li>Carnivore</li>
+  <li>Cowardly_Lion</li>
+  <li>Subspecies</li>
+  <li>Taxonomy_(biology)</li>
+</ul>
+
+
+<p>
+  It is clear as a human that following the link to the Federal_government_of_the_United_States page is more likely to lead to the Barack_Obama target page than following the Subspecies link. We want to be able to capture the idea of following links to pages "closer” in meaning to the target page before those that are more unrelated. The basic heuristic we use is to rank each page by the number of links in common between that page and the target page. The intuition is that pages dealing with similar content will often have more links in common than unrelated pages.
+</p>
+
+<p>
+  Thus for our final algorithm, we do an A* search with the heuristic for each link being the number of links it has in common with the target page.
+</p>
+
+<div class="code-block">
+  <pre>
+
+    To find a link ladder between pages start_page and end_page:
+
+        Create an empty priority queue of ladders (a ladder is a vector<string>).
+
+        Create/add a ladder containing {start_page} to the queue.
+
+        While the queue is not empty:
+
+            Dequeue the highest priority partial-ladder from the front of the queue.
+
+            Get the set of links of the current page i.e. the page at the end of the
+            just dequeued ladder.
+
+            If the end_page is in this set:
+                We have found a ladder!
+                Add end_page to the ladder you just dequeued and return it.
+
+            For each neighbour page in the current page's link set:
+
+                If this neighbour page hasn't already been visited:
+
+                    Create a copy of the current partial-ladder.
+
+                    Put the neighbor page string on top of the copied ladder.
+
+                    Add the copied ladder to the queue.
+
+        If while loop exits, no ladder was found so return an empty vector<string>
+      </pre>
+    </div>
+
+
+
+    <p>
+      This assignment has been particularly interesting because of its fundamental difficulty. The lack of a clear "right" answer makes it engaging for students who are used to having hand crafted assignments tweaked for their convenience convenience. Moreover, there is certainly a uniqueness factor that brings this assignment to light as it allows students to implement a program that is literally not available on the internet. Lastly, it exposes students to a range of different skills such as algorithms, basic and advanced containers, as well as caching results for performance improvments.
+    </p>
+
+    <p>
+      In my experience, this assignment has been largely succesful, with the majority of my students indicating they "loved" the assignment. I have used it in a CS2-level introductory C++ programming course to help students play around with the standard library collections, iterators, and algorithms but it could easily be adapted for any popular programming language and alternative focus. For example, you could take out the generous pseudocode and let students figure something out on their own. Alternately, you can give them the idea of the algorithm and let them figure out what data structure and setup is ideal for solving the task. My specific version uses QT libraries to deal with the networking.
+    </p>
+
+    <h2>Improvements</h2>
+    <p>
+      There is definitely room for improvment. In particular, I have plans to add some kind of graphical representing of the search process. This would provide some kind of entertainment while the bot is searching through the pages for a ladder. It would also be nice to have a quicker, more efficient search which might be possible using multithreading. If you have any ideas on improving this assignment, I would absolutely love to hear from you.
+    </p>
+
+
+    <h2>Contact</h2>
+    <p>
+      If you have any question, ideas, improvements, or interesting stories, I would love to hear from you! I am also happy to share assignment solutions and/or help you deploy your own version with a different language or scope. You can reach me at malikali _at_ stanford.edu.
+    </p>
+
+  </div>
+  </body>
+  </html>

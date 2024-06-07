@@ -1,0 +1,46 @@
+.paper-title h1 {
+	font-size: 36px;
+	font-weight: normal;
+}
+
+.paper-title h2 {
+	font-size: 25px;
+	font-weight: normal;
+	font-style: italic;
+}
+
+.paper-container {
+	border: 1px solid gray;
+	border-radius: 40px;
+	padding: 20px;
+}
+
+
+#arch-diagram {
+	width: 90%;
+}
+
+.highlight {
+	color:	rgb(237, 45, 141);
+}
+
+.paper-link h5 {
+	font-weight: normal;
+}
+
+
+.gif-container {
+	width: 90%;
+	margin: auto;
+}
+
+.gif-pair {
+	display: flex;
+	justify-content: center;
+	min-width: 200px;
+	margin: auto;
+}
+
+.gif-pair img {
+	margin: 15px;
+}

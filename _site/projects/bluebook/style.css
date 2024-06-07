@@ -1,0 +1,56 @@
+.paper-title h1 {
+	font-size: 36px;
+	font-weight: normal;
+	text-align: center;
+}
+
+.paper-title h2 {
+	font-size: 25px;
+	font-weight: normal;
+	font-style: italic;
+}
+
+.paper-container {
+	border: 1px solid gray;
+	border-radius: 40px;
+	padding: 20px;
+}
+
+
+.screenshot-container {
+	/*width: 90%;*/
+	/*margin: auto;*/
+}
+
+.screenshot {
+	margin: 15px;
+	margin-bottom: 30px;
+}
+
+.screenshot figcaption {
+	margin-top: 5px;
+	font-size: 15px;
+	font-weight: lighter;
+	font-style: italic;
+}
+
+.screenshot img {
+	height: 300px;
+	width: 510px;
+	border: 1px solid lightgray;
+}
+
+.screen-img {
+	height: 300px;
+	width: 510px;
+	border: 1px solid gray;
+}
+
+.contributors h2 {
+	font-weight: normal;
+	font-size: 24px;
+}
+
+.author-list {
+	text-align: left;
+}
